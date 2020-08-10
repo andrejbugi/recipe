@@ -4,11 +4,12 @@ class User < ApplicationRecord
   MINIMUM_PASSWORD_LENGTH = 8
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
+  before_save :email_to_downcase
+
   has_secure_password
 
   has_many :meal_recipes, dependent: :destroy
-
-  before_save :email_to_downcase
+  # accepts_nested_attributes_for :meal_recipes, allow_destroy: true
 
   validates :username, presence: true, length: { maximum: MAXIMUM_USERNAME_LENGTH }
   validates :email, presence: true, length: { maximum: MAXIMUM_EMAIL_LENGTH },
