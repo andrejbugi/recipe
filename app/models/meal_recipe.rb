@@ -11,7 +11,13 @@ class MealRecipe < ApplicationRecord
   has_many :recipe_instructions,
            inverse_of: :meal_recipe,
            dependent: :destroy
+  has_many :recipe_ingredients,
+           inverse_of: :meal_recipe,
+           dependent: :destroy
   accepts_nested_attributes_for :recipe_instructions,
                                 allow_destroy: true,
                                 reject_if: lambda { |attributes| attributes['instruction'].blank? }
+  accepts_nested_attributes_for :recipe_ingredients,
+                                allow_destroy: true,
+                                reject_if: lambda { |attributes| attributes['ingredient'].blank? }
 end

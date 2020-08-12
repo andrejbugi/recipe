@@ -19,11 +19,21 @@
 <h2> Instructions: </h2>
 <div class="content">
   <ol type="1">
-    <% @meal_recipe.recipe_instructions.each do |instructions| %>
+    <% @meal_recipe.recipe_instructions.each do |instruction| %>
       <li>
-        <%= instructions.instruction %>
+        <%= instruction.instruction %>
       </li>
     <% end %>
   </ol>
 </div>
 
+<h2> Ingredients: </h2>
+<div class="content">
+  <ul>
+    <% @meal_recipe.recipe_ingredients.each do |ingredient| %>
+      <li>
+        <%= ingredient.ingredient %>
+      </li>
+    <% end %>
+  </ul>
+</div>

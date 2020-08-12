@@ -1,0 +1,11 @@
+Ingredients:
+  <ul>
+    <%= form.fields_for :recipe_ingredients do |ingredient_form| %>
+      <li>
+        <%= ingredient_form.check_box :_destroy, value: true %>
+        <%= ingredient_form.label :ingredient %>
+        <%= ingredient_form.text_area :ingredient %>
+      </li>
+    <% end %>
+    <p><em>Check a box for deleting an ingredient.</em></p>
+  </ul>

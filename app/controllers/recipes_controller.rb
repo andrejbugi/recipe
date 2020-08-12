@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
   def new
     @meal_recipe = MealRecipe.new
     4.times { @meal_recipe.recipe_instructions.build }
+    5.times { @meal_recipe.recipe_ingredients.build }
   end
 
   def create
@@ -28,6 +29,7 @@ class RecipesController < ApplicationController
   def edit
     @meal_recipe = MealRecipe.find(params[:id])
     2.times { @meal_recipe.recipe_instructions.build }
+    2.times { @meal_recipe.recipe_ingredients.build }
   end
 
   def update
@@ -51,6 +53,8 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:meal_recipe).permit(:title, :description,
                                         recipe_instructions_attributes:
-                                        %i[id instruction _destroy])
+                                        %i[id instruction _destroy],
+                                        recipe_ingredients_attributes:
+                                        %i[id ingredient _destroy])
   end
 end
