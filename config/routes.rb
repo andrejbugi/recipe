@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :meal_recipes, controller: 'recipes' do
     resources :recipe_instructions
-    # resources :recipe_ingredients
+    resources :recipe_ingredients
   end
 
   get 'users/signup', to: 'users#new'

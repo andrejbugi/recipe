@@ -24,7 +24,7 @@ class RecipeInstructionsController < ApplicationController
   def update
     @recipe_instruction = RecipeInstruction.find(params[:id])
     @meal_recipe = @recipe_instruction.meal_recipe
-    @recipe_instruction.user = current_user
+    # @recipe_instruction.user = current_user
 
     if @recipe_instruction.update recipe_instruction_params
       redirect_to @meal_recipe

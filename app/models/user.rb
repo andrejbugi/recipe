@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :meal_recipes, dependent: :destroy
   has_many :recipe_instructions, dependent: :destroy
   has_many :recipe_ingredients, dependent: :destroy
-  # accepts_nested_attributes_for :meal_recipes, allow_destroy: true
 
   validates :username, presence: true, length: { maximum: MAXIMUM_USERNAME_LENGTH }
   validates :email, presence: true, length: { maximum: MAXIMUM_EMAIL_LENGTH },

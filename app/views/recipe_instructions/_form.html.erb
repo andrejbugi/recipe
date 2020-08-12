@@ -1,15 +1,7 @@
-<%= form_with model: [@meal_recipe, @recipe_instruction], local: true do |form| %>
-  <%= form.label :instruction %>
-  <%= form.text_area :instruction %>
-
-  <%= form.submit %>
-<% end %>
-
-
 <% if @recipe_instruction.errors.any? %>
   <div id="error_explanation">
     <h2>
-      <%= pluralize(@recipe_instruction.errors.count, "error") %> prohibited this recipe from being saved:
+      <%= pluralize(@recipe_instruction.errors.count, "error") %> prohibited this instruction from being saved:
     </h2>
     <ul>
       <% @recipe_instruction.errors.full_messages.each do |msg| %>
@@ -17,4 +9,12 @@
       <% end %>
     </ul>
   </div>
+<% end %>
+
+
+<%= form_with model: [@meal_recipe, @recipe_instruction], local: true do |form| %>
+  <%= form.label :instruction %>
+  <%= form.text_area :instruction %>
+
+  <%= form.submit %>
 <% end %>
