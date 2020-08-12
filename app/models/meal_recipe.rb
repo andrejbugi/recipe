@@ -8,4 +8,10 @@ class MealRecipe < ApplicationRecord
                                                     maximum: MAXIMUM_DESCRIPTION_LENGTH }
 
   belongs_to :user
+  has_many :recipe_instructions,
+           inverse_of: :meal_recipe,
+           dependent: :destroy
+  accepts_nested_attributes_for :recipe_instructions,
+                                allow_destroy: true,
+                                reject_if: lambda { |attributes| attributes['instruction'].blank? }
 end

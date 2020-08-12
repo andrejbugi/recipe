@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
 
   def new
     @meal_recipe = MealRecipe.new
+    4.times { @meal_recipe.recipe_instructions.build }
   end
 
   def create
@@ -20,13 +21,13 @@ class RecipesController < ApplicationController
     if @meal_recipe.save
       redirect_to meal_recipe_path(@meal_recipe), notice: "Recipe Created!"
     else
-      @errors = @meal_recipe.errors.full_messages
       render :new
     end
   end
 
   def edit
     @meal_recipe = MealRecipe.find(params[:id])
+    2.times { @meal_recipe.recipe_instructions.build }
   end
 
   def update
@@ -42,12 +43,14 @@ class RecipesController < ApplicationController
   def destroy
     meal_recipe = MealRecipe.find(params[:id])
     meal_recipe.destroy
-    redirect_to recipes_path, notice: "Deleted Recipe: #{meal_recipe.title}"
+    redirect_to meal_recipes_path, notice: "Recipe Deleted"
   end
 
   private
 
   def recipe_params
-    params.require(:meal_recipe).permit(:title, :description)
+    params.require(:meal_recipe).permit(:title, :description,
+                                        recipe_instructions_attributes:
+                                        %i[id instruction _destroy])
   end
 end

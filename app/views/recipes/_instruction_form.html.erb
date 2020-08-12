@@ -1,0 +1,12 @@
+Instructions:
+  <ul>
+    <%= form.fields_for :recipe_instructions do |instruction_form| %>
+      <li>
+        <%= instruction_form.check_box :_destroy, value: true %>
+        <%= instruction_form.label :instruction %>
+        <%= instruction_form.text_area :instruction %>
+      </li>
+    <% end %>
+    <p><em>Check a box for deleting an instruction.</em></p>
+  </ul>
+
