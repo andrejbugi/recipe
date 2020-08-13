@@ -9,8 +9,6 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :meal_recipes, dependent: :destroy
-  has_many :recipe_instructions, dependent: :destroy
-  has_many :recipe_ingredients, dependent: :destroy
 
   validates :username, presence: true, length: { maximum: MAXIMUM_USERNAME_LENGTH }
   validates :email, presence: true, length: { maximum: MAXIMUM_EMAIL_LENGTH },

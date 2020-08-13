@@ -7,7 +7,6 @@ class RecipeInstructionsController < ApplicationController
   def create
     @meal_recipe = MealRecipe.find(params[:meal_recipe_id])
     @recipe_instruction = @meal_recipe.recipe_instructions.build(recipe_instruction_params)
-    @recipe_instruction.user = current_user
 
     if @recipe_instruction.save
       redirect_to @meal_recipe
@@ -24,7 +23,6 @@ class RecipeInstructionsController < ApplicationController
   def update
     @recipe_instruction = RecipeInstruction.find(params[:id])
     @meal_recipe = @recipe_instruction.meal_recipe
-    # @recipe_instruction.user = current_user
 
     if @recipe_instruction.update recipe_instruction_params
       redirect_to @meal_recipe
