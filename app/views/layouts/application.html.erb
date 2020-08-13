@@ -11,9 +11,12 @@
 
   <body>
     <section>
+      <%= render 'shared/navbar' %>
       <%= render 'shared/flash' %>
-      
+
       <%= yield %>
+
+      <%= render 'shared/footer' %>
     </section>
   </body>
 </html>
