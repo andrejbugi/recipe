@@ -1,0 +1,29 @@
+<% if @recipe_ingredient.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@recipe_ingredient.errors.count, "error") %> prohibited this ingredient from being saved:
+    </h2>
+    <ul>
+      <% @recipe_ingredient.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="columns is-multiline is-centered">
+    <div class="column">
+      <div class="field">
+        <div class="control">
+          <%= form_with model: [@meal_recipe, @recipe_ingredient], local: true do |form| %>
+            <%= form.label :ingredient, class: "label" %>
+            <%= form.text_area :ingredient, class: "input", placeholder: "Add ingredient.." %>
+
+            <%= form.submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
