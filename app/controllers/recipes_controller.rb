@@ -1,13 +1,12 @@
 class RecipesController < ApplicationController
-  skip_before_action :require_login, only: [:index, :show]
+  skip_before_action :require_login, only: %i[index show]
+  before_action :find_meal_recipe, only: %i[show edit update destroy]
 
   def index
     @meal_recipes = MealRecipe.all
   end
 
-  def show
-    @meal_recipe = MealRecipe.find(params[:id])
-  end
+  def show; end
 
   def new
     @meal_recipe = MealRecipe.new
@@ -27,14 +26,11 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @meal_recipe = MealRecipe.find(params[:id])
     2.times { @meal_recipe.recipe_instructions.build }
     2.times { @meal_recipe.recipe_ingredients.build }
   end
 
   def update
-    @meal_recipe = MealRecipe.find(params[:id])
-
     if @meal_recipe.update(recipe_params)
       redirect_to meal_recipe_path(@meal_recipe)
     else
@@ -43,9 +39,8 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    meal_recipe = MealRecipe.find(params[:id])
-    meal_recipe.destroy
-    redirect_to meal_recipes_path, notice: "Recipe Deleted"
+    @eal_recipe.destroy
+    redirect_to meal_recipes_path
   end
 
   private
@@ -56,5 +51,9 @@ class RecipesController < ApplicationController
                                         %i[id instruction _destroy],
                                         recipe_ingredients_attributes:
                                         %i[id ingredient _destroy])
+  end
+
+  def find_meal_recipe
+    @meal_recipe = MealRecipe.find(params[:id])
   end
 end
