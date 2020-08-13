@@ -1,20 +1,33 @@
-<h2>User info:</h2>
-<div class="content">
-  <ul>
-    <li>Username: <strong><%= @user.username %></strong></li>
-    <li>First Name: <strong><%= @user.first_name %></strong></li>
-    <li>Last Name: <strong><%= @user.last_name %></strong></li>
-    <li>E-mail Address: <strong><%= @user.email %></strong></li>
-  </ul>
+<div class="columns is-multiline is-centered">
+  <div class="column is-half">
+    <div class="card">
+      <div class="card-content">
+        <div class="content">
+          <p class="title is-4">
+            User info:
+          </p>
+          <ul>
+            <li>Username: <strong><%= @user.username %></strong></li>
+            <li>First Name: <strong><%= @user.first_name %></strong></li>
+            <li>Last Name: <strong><%= @user.last_name %></strong></li>
+            <li>E-mail Address: <strong><%= @user.email %></strong></li>
+          </ul>
+          <p class="subtitle">
+            Recipes:
+          </p>
+          <ol type="1">
+            <% @user.meal_recipes.each do |recipe| %>
+              <li><%= link_to "#{recipe.title}", meal_recipe_path(recipe) %></li>
+            <% end %>
+          </ol>
+        </div>
+        <footer class="card-footer">
+          <%= link_to "Home", root_path, class: "card-footer-item" %>
+          <%= link_to "Back", :back, class: "card-footer-item" %>
+      </footer>
+      </div>
+    </div>
+  </div>
 </div>
 
-<h2>Recipes:</h2>
-<div class="content">
-  <ol type="1">
-    <% @user.meal_recipes.each do |recipe| %>
-      <li><%= link_to "#{recipe.title}", meal_recipe_path(recipe) %></li>
-    <% end %>
-  </ol>
-</div>
 
-<p> <%= link_to "Back", :back %>

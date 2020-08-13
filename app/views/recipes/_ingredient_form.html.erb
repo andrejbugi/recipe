@@ -1,21 +1,21 @@
-<h3><strong>Ingredients:</strong></h3>
-<ul>
-<div class="container">
-  <div class="field">
-  <%= form.fields_for :recipe_ingredients do |ingredient_form| %>
-    <li>
-      <div class="control">
-        <div class="columns is-multiline">
-          <div class="column is-half">
-            <%= ingredient_form.text_area :ingredient, class: "input", placeholder: "Add ingredient.." %>
-            <%= ingredient_form.check_box :_destroy, value: true, class: "checkbox" %>
+<div id="form_ingredient" class="container">
+  <h3><strong>Ingredients:</strong></h3>
+  <ul>
+    <div class="field">
+      <%= form.fields_for :recipe_ingredients do |ingredient_form| %>
+        <li>
+          <div class="control">
+            <div class="columns is-multiline">
+              <div class="column is-half">
+                <%= ingredient_form.text_field :ingredient, class: "input", placeholder: "Add ingredient.." %>
+                <%= ingredient_form.check_box :_destroy, value: true, class: "checkbox" %>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </li>
-  <% end %>
-  <p class="help">Check a box for deleting an ingredient.</p>
-  </div>
+        </li>
+      <% end %>
+      <p class="help">Check a box for deleting an ingredient.</p>
+    </div>
+  </ul>
 </div>
-</ul>
 

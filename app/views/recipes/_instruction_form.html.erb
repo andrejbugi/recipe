@@ -1,20 +1,20 @@
-<h3><strong>Instructions:</strong></h3>
-<ul>
 <div class="container">
-  <div class="field">
-  <%= form.fields_for :recipe_instructions do |instruction_form| %>
-    <li>
-      <div class="control">
-        <div class="columns is-multiline">
-          <div class="column is-half">
-            <%= instruction_form.text_area :instruction, class: "input", placeholder: "Add instruction.." %>
-            <%= instruction_form.check_box :_destroy, value: true, class: "checkbox" %>
+  <h3><strong>Instructions:</strong></h3>
+  <ul>
+    <div class="field">
+      <%= form.fields_for :recipe_instructions do |instruction_form| %>
+        <li>
+          <div class="control">
+            <div class="columns is-multiline">
+              <div class="column is-half">
+                <%= instruction_form.text_area :instruction, class: "input", placeholder: "Add instruction.." %>
+                <%= instruction_form.check_box :_destroy, value: true, class: "checkbox" %>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </li>
-  <% end %>
-  <p class="help">Check a box for deleting an instruction.</p>
-  </div>
+        </li>
+      <% end %>
+      <p class="help">Check a box for deleting an instruction.</p>
+    </div>
+  </ul>
 </div>
-</ul>

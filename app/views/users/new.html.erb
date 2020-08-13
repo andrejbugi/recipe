@@ -1,24 +1,38 @@
-<h1> Sign up! </h1>
+<div class="columns is-multiline is-centered">
+  <div class="column is-half">
+    <div class="content">
+      <div class="title is-3">
+        <p>Sign up!</p>
+      </div>
+    </div>
+    <%= form_with model: @user, local: true do |form| %>
+      <div class="field">
+        <div class="control">
+          <%= form.label :username, class: "label" %>
+          <%= form.text_field :username, class: "input", placeholder: "Enter your username.." %>
 
+          <%= form.label :first_name, class: "label" %>
+          <%= form.text_field :first_name, class: "input", placeholder: "Enter your first name.." %>
 
-<%= form_with model: @user, local: true do |form| %>
-  <%= form.label :username %>
-  <%= form.text_field :username %>
+          <%= form.label :last_name, class: "label" %>
+          <%= form.text_field :last_name, class: "input", placeholder: "Enter your last name.." %>
 
-  <%= form.label :first_name%>
-  <%= form.text_field :first_name %>
+          <%= form.label :email, class: "label" %>
+          <%= form.email_field :email, class: "input", placeholder: "Enter your email.." %>
 
-  <%= form.label :last_name %>
-  <%= form.text_field :last_name %>
+          <%= form.label :password, class: "label" %>
+          <%= form.password_field :password, class: "input", placeholder: "Enter your password.." %>
 
-  <%= form.label :email %>
-  <%= form.email_field :email %>
+          <%= form.label :password_confirmation, class: "label" %>
+          <%= form.password_field :password_confirmation, class: "input", placeholder: "Enter your password again.." %>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <%= form.submit "Sign Up!", class: "button is-info is-light" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation %>
-
-  <%= form.submit %>
-<% end %>
