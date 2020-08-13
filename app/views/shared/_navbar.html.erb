@@ -1,0 +1,29 @@
+<div class="container">
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <%= link_to "All Recipes", root_path, class: "navbar-item is-size-1"%>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <% if logged_in? %>
+              <%= link_to "New Recipe", new_meal_recipe_path, class: "button is-primary has-text-weight-bold" %>
+              <%= link_to "Log Out", logout_path, method: :delete, class: "button is-primary has-text-weight-bold" %>
+            <% else %>
+              <%= link_to "Sign In", login_path, class: "button is-primary has-text-weight-bold" %>
+              <%= link_to "Sign Up", users_signup_path, class: "button is-primary has-text-weight-bold" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

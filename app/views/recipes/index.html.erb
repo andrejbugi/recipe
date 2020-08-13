@@ -1,26 +1,26 @@
-<h1>Recipes</h1>
-
-<div>
-  <% if logged_in? %>
-    <%= link_to "New Recipe", new_meal_recipe_path %>
-    <%= link_to "Log Out", logout_path, method: :delete %>
-  <% else %>
-    <%= link_to "Sign In", login_path %>
-    <%= link_to "Sign Up", users_signup_path %>
-  <% end %>
-</div>
-<div class="recipes">
-  <% @meal_recipes.each do |recipe| %>
-    <div class="recipe">
-      <h2><%= recipe.title %></h2>
-      <p><%= recipe.description %></p>
-      <ul class="recipe-actions">
-        <li><%= link_to 'Show', meal_recipe_path(recipe[:id]) %></li>
-        <li> <%= link_to 'Edit', edit_meal_recipe_path(recipe[:id]) %></li>
-        <li> <%= link_to 'Delete', meal_recipe_path(recipe[:id]), data: {
-          confirm: "Are you sure you want to delete this recipe?"
-        }, method: :delete %></li>
-      </ul>
+<div class="container">
+  <div class="columns is-multiline is-centered">
+    <div class="column is-half">
+      <div class="card">
+        <% @meal_recipes.each do |recipe| %>
+          <div class="card-content">
+            <p class="title">
+              <%= recipe.title %>
+            </p>
+            <p class="subtitle">
+              <%= recipe.description %>
+            </p>
+          </div>
+          <footer class="card-footer">
+              <%= link_to 'Show', meal_recipe_path(recipe[:id]), class: "card-footer-item" %>
+              <%= link_to 'Edit', edit_meal_recipe_path(recipe[:id]), class: "card-footer-item" %>
+              <%= link_to 'Delete', meal_recipe_path(recipe[:id]), class: "card-footer-item", data: {
+                                                      confirm: "Are you sure you want to delete this recipe?"
+                                                      }, method: :delete %>
+            </footer>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
 </div>
+
