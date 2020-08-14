@@ -5,11 +5,15 @@ class RecipeInstructionsController < ApplicationController
   def new
     @meal_recipe = MealRecipe.find(params[:meal_recipe_id])
     @recipe_instruction = @meal_recipe.recipe_instructions.build
+
+    redirect_to @meal_recipe and return unless same_as_current_user?(@meal_recipe.user)
   end
 
   def create
     @meal_recipe = MealRecipe.find(params[:meal_recipe_id])
     @recipe_instruction = @meal_recipe.recipe_instructions.build(recipe_instruction_params)
+
+    redirect_to @meal_recipe and return unless same_as_current_user?(@meal_recipe.user)
 
     if @recipe_instruction.save
       redirect_to @meal_recipe
@@ -19,17 +23,22 @@ class RecipeInstructionsController < ApplicationController
   end
 
   def edit
+    redirect_to @meal_recipe unless same_as_current_user?(@meal_recipe.user)
   end
 
   def update
+    redirect_to @meal_recipe and return unless same_as_current_user?(@meal_recipe.user)
+
     if @recipe_instruction.update recipe_instruction_params
-      redirect_to @meal_recipe
+      redirect_to @meal_recipe and return
     else
       render :edit
     end
   end
 
   def destroy
+    redirect_to @meal_recipe and return unless same_as_current_user?(@meal_recipe.user)
+
     @recipe_instruction.destroy
 
     redirect_to(@meal_recipe)
