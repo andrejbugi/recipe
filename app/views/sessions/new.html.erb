@@ -1,22 +1,24 @@
-<h1></h1>
-
-<div class="columns is-mobile is-multiline is-vcentered is-centered">
-  <div class="column is-half">
-    <div class="container">
-      <div class="title is-2">
-        <h2>Sign In</h2>
+<div class="container">
+  <div class="columns is-multiline is-centered">
+    <div class="column is-half">
+      <div class="content">
+        <div class="title is-3">
+          <p>Sign in</p>
+        </div>
       </div>
       <div class="field">
         <%= form_with url: login_path, scope: :session, local: true do |sessions_form| %>
-          <div class="control">
-                <%= sessions_form.label :email, class: "label" %>
-                <%= sessions_form.email_field :email, class: "input", placeholder: "Email.." %>
+        <div class="control">
+          <%= sessions_form.label :email, class: "label" %>
+          <%= sessions_form.email_field :email, class: "input", placeholder: "Email.." %>
 
-                <%= sessions_form.label :password, class: "label" %>
-                <%= sessions_form.password_field :password, class: "input", placeholder: "Password.." %>
+          <%= sessions_form.label :password, class: "label" %>
+          <%= sessions_form.password_field :password, class: "input", placeholder: "Password.." %>
 
-                <%= sessions_form.submit 'Sign In', class: "button" %>
-          </div>
+          <%= sessions_form.submit 'Sign In', class: "button is-info is-light" %>
+
+          <%= link_to "Cancel", root_path, class: "button is-info is-light" %>
+        </div>
         <% end %>
       </div>
     </div>

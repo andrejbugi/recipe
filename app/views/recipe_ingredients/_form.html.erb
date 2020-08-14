@@ -1,26 +1,34 @@
-<% if @recipe_ingredient.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@recipe_ingredient.errors.count, "error") %> prohibited this ingredient from being saved:
-    </h2>
-    <ul>
-      <% @recipe_ingredient.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+<div class="container">
+  <div class="columns is-multiline is-centered">
+    <div class="column is-half">
+      <% if @recipe_ingredient.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@recipe_ingredient.errors.count, "error") %> prohibited this ingredient from being saved:
+          </h2>
+          <ul>
+            <% @recipe_ingredient.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
-    </ul>
+    </div>
   </div>
-<% end %>
+</div>
 
 <div class="container">
   <div class="columns is-multiline is-centered">
-    <div class="column is-two-fifths">
+    <div class="column is-half">
+      <div class="title">
+        Ingredient:
+      </div>
       <div class="field">
         <div class="control">
           <%= form_with model: [@meal_recipe, @recipe_ingredient], local: true do |form| %>
-            <%= form.label :ingredient, class: "label" %>
             <%= form.text_area :ingredient, class: "input", placeholder: "Add ingredient.." %>
 
-            <%= form.submit %>
+            <%= form.submit submit, class: "button is-black" %>
           <% end %>
         </div>
       </div>

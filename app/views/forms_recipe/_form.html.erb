@@ -1,13 +1,12 @@
 <div class="container">
   <div class="columns is-multiline is-centered">
     <div class="column is-half">
-      <div class="container">
-        <div class="title is-2">
+      <div class="content">
+        <div class="title is-3 is-centered">
           <%= heading %>
         </div>
       </div>
-    </div>
-    <div class="column is-two-fifths is-offset-2">
+      
       <% if @meal_recipe.errors.any? %>
         <div id="error_explanation">
           <h2>
@@ -20,15 +19,9 @@
           </ul>
         </div>
       <% end %>
-    </div>
-  </div>
-</div>
 
-<div class="container">
-  <div class="field">
-    <%= form_with model: @meal_recipe, local: true do |form| %>
-      <div class="columns is-multiline is-centered">
-        <div class="column is-half">
+      <div class="field">
+        <%= form_with model: @meal_recipe, local: true do |form| %>
           <div class="control">
             <%= form.label :title, class: "label" %>
             <%= form.text_field :title, class: "input", placeholder: "Add title.." %>
@@ -36,17 +29,17 @@
             <%= form.label :description, class: "label" %>
             <%= form.text_area :description, class: "input", placeholder: "Add description.." %>
 
-            <%= render 'instruction_form',
+            <%= render '/forms_recipe/instruction_form',
                 form: form %>
 
-            <%= render 'ingredient_form',
+            <%= render '/forms_recipe/ingredient_form',
                 form: form %>
 
             <%= form.submit submit, class: "submit", class: "button is-black" %>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
 
