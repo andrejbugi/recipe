@@ -6,7 +6,7 @@
           <%= heading %>
         </div>
       </div>
-      
+
       <% if @meal_recipe.errors.any? %>
         <div id="error_explanation">
           <h2>
@@ -36,6 +36,8 @@
                 form: form %>
 
             <%= form.submit submit, class: "submit", class: "button is-black" %>
+
+            <%= link_to "Cancel", root_path, class: "button is-black" %>
           </div>
         <% end %>
       </div>

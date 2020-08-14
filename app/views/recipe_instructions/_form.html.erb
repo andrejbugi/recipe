@@ -29,6 +29,8 @@
             <%= form.text_area :instruction, class: "input", placeholder: "Add instruction.." %>
 
             <%= form.submit submit, class: "button is-black" %>
+
+            <%= link_to "Cancel", meal_recipe_path(@meal_recipe), class: "button is-black" %>
           <% end %>
         </div>
       </div>
