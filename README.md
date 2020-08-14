@@ -13,7 +13,16 @@
 - rails >= 6.0.3.2
 - bcrypt = 3.1.7
 - font-awesome-sass = 5.13
+- factory_bot_rails
+
+  **In development, test group**
+
 - rspec-rails = 4.0.1
+
+  **In test group**
+
+- capybara
+- shoulda-matchers = 4.0
 
 
 # What you can do with Recipe
@@ -61,7 +70,7 @@
   - rails server
 
   This will start the server, then in the browser go to: localhost:3000
-  
+
   You should now be able to see the Recipes
 
   **Have Fun and Make Great Recipes!**
