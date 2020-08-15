@@ -23,6 +23,8 @@
 
 - capybara
 - shoulda-matchers = 4.0
+- webdrivers
+- rails-controller-testing
 
 
 # What you can do with Recipe
