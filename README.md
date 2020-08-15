@@ -66,6 +66,9 @@
 
   This command will give you some examples for trying out the application.
 
+  To run the tests, you can write:
+  - rspec
+
   To start the app(server), write the next command in you terminal
   - rails server
 
@@ -74,4 +77,3 @@
   You should now be able to see the Recipes
 
   **Have Fun and Make Great Recipes!**
-

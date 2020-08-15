@@ -3,6 +3,17 @@ require 'rails_helper'
 RSpec.describe User do
   describe 'associations' do
     it { is_expected.to have_many(:meal_recipes) }
+
+    describe 'dependency' do
+      let(:meal_recipes_count) { 1 }
+      let(:user) { create(:user) }
+
+      it 'destroys recipes' do
+        create_list(:meal_recipe, meal_recipes_count, user: user)
+
+        expect { user.destroy }.to change { MealRecipe.count }.by(-meal_recipes_count)
+      end
+    end
   end
 
   describe 'validations' do

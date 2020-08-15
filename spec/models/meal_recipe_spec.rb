@@ -6,6 +6,25 @@ RSpec.describe MealRecipe do
     it { is_expected.to have_many(:recipe_ingredients) }
     it { is_expected.to belong_to(:user) }
 
+    describe 'dependency' do
+      let(:recipe_instructions_count) { 1 }
+      let(:recipe_ingredients_count) { 1 }
+      let(:meal_recipe) { create(:meal_recipe) }
+
+      it 'destroys recipe_instructions' do
+        create_list(:recipe_instruction, recipe_instructions_count, meal_recipe: meal_recipe)
+
+        expect { meal_recipe.destroy }.to change { RecipeInstruction.count }.by(-recipe_instructions_count)
+      end
+
+      it 'destroys recipe_ingredients' do
+        create_list(:recipe_ingredient, recipe_ingredients_count, meal_recipe: meal_recipe)
+
+        expect { meal_recipe.destroy }.to change { RecipeIngredient.count }.by(-recipe_ingredients_count)
+      end
+
+    end
+
     it { is_expected.to accept_nested_attributes_for(:recipe_instructions).allow_destroy(true) }
     it { is_expected.to accept_nested_attributes_for(:recipe_ingredients).allow_destroy(true) }
   end
