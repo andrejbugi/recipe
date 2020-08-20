@@ -63,10 +63,32 @@
   Then run:
   - bundle install
 
+  To use the Database, first you need to install postgresql:
+
+  **follow these instructions for Ubuntu**
+
+    - https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04
+
+  **follow these instructions for Mac OSX**
+
+    - https://www.codementor.io/@engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb
+
+  **follow these instructions for Windows**
+
+    - https://www.microfocus.com/documentation/idol/IDOL_12_0/MediaServer/Guides/html/English/Content/Getting_Started/Configure/_TRN_Set_up_PostgreSQL.htm
+
   For starting you can seed the database by running:
+  - rails db:setup
+
+  then:
   - rails db:seed
 
   This command will give you some examples for trying out the application.
+
+  **Example users' login info:**
+  - brad@gmail.com, pass: 12341234
+  - steve@gmail.com, pass: 12341234
+  - john@gmail.com, pass: 12341234
 
   To run the tests, you can write:
   - rspec
